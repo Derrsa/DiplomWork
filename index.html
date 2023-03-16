@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <title>Low degree</title>
+</head>
+<body>
+<header id="header">
+    <div class="container flex">
+        <div class="logo">
+            <span style="font-size: 1.5rem; color: darkred;">
+                <i class="fa-sharp fa-solid fa-2xl fa-temperature-arrow-down"></i>
+            </span>
+
+        </div>
+        <nav class="nav">
+            <ul class="nav__list list-reset ">
+                <li class="nav__item">
+                    <a href="#recommend" class="nav__link">Common recommendation</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#dose-count" class="nav__link">Get your dose</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#donate" class="nav__link">Say thanks</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#login" class="nav__link">Logout</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main id="main">
+    <div class="container">
+        <div id="login">
+            <div class="login__container">
+                <div class="login__user-block flex">
+                    <label for="login__user"> User name:
+                    </label>
+                    <input type="text" id="login__user">
+                    <span class="alert__text alert-login">Поле обязательно для ввода</span>
+                    <span class="alert__incorrect alert-login">Enter correct email or create account</span>
+
+                </div>
+                <div class="login__password-block flex">
+                    <label for="login__pasw"> Password:
+                    </label>
+                    <input type="text" id="login__pasw">
+                    <span class="alert__text alert-login">Поле обязательно для ввода</span>
+                    <span class="alert__incorrect alert-login">Enter correct password!</span>
+                </div>
+
+                <button class="login__btn">Login</button>
+                <button class="login__reg">Registration</button>
+            </div>
+        </div>
+        <div id="reg">
+            <div class="reg__container container">
+                <h3 class="reg__title">Registration form</h3>
+                <div class="reg__inputs-wrp">
+                    <label for="reg__email"> Enter your email:
+                    </label>
+                    <input type="text" id="reg__email">
+                    <label for="reg__child"> Enter your child name
+                    </label>
+                    <input type="text" id="reg__child">
+                    <label for="reg__pass"> Enter your password:
+                    </label>
+                    <input type="text" id="reg__pass">
+                    <label for="reg__corr-pass"> Confirm password:
+                    </label>
+                    <input type="text" id="reg__corr-pass">
+                </div>
+                <button class="reg__btn btn">Send</button>
+                <div class="reg__done">
+                    <h3>Cool! Now, you can enter your data and start to use 'Low degree'</h3>
+                    <button class="reg__btn-back btn">Return to login</button>
+                </div>
+            </div>
+
+
+        </div>
+        <div id="present">
+            <a href="#recommend" class="present__block present__rec rec">
+                Common recommendation
+
+            </a>
+            <a href="#dose-count" class="present__block present__count count">
+                Count your dose
+            </a>
+            <a href="#donate" class="present__block present__donate donate">
+                Say thanks
+            </a>
+        </div>
+        <div id="recommend">
+            <div class="container recommend__container">
+                <h2 class="recommend__title">How to bring the temperature down? </h2>
+                <p class="recommend__text">First of all, we need to find out what kind of fever we have. <br>
+                    There are two types of fever:
+                    <span style="text-decoration: underline; color: grey">White fever</span>
+                    and
+                    <span style="text-decoration: underline; color: var(--main-red)">Red fever</span>
+                    <br>
+                </p>
+                <span class="recommend__subtitle-white">White fever:</span> <br>
+                <ul>
+                    <li>The skin is pale, marbled, with a bluish tinge of nail beds and lips</li>
+                    <li>The limbs are cold to the touch</li>
+                    <li>The symptom of a "white spot" is positive when pressing on the skin</li>
+                    <li>Behavior is disturbed (the baby becomes indifferent, sluggish), delirium and convulsions are
+                        possible
+                    </li>
+                </ul>
+
+                <span class="recommend__subtitle-white">What we gonna do with white fever?</span>
+                <ul>
+                    <li>Undress the baby as much as possible;</li>
+                    <li>Apply a cool wet bandage on the forehead;</li>
+                    <li>Regularly ventilate the room (without the formation of drafts);
+                        blow with a fan;
+                    </li>
+                    <li>Wipe the body with room temperature water;</li>
+                    <li>Apply cold to the projection of large vessels (in the axillary and inguinal areas, on the side
+                        of the neck) and the liver area;
+                        drink plenty of water.
+                    </li>
+                    <li>And if fever more than 38.5 degree, we need to <a class="recommend__link" href="#dose-count">take
+                        antipyretic</a></li>
+
+                </ul>
+
+                <span class="recommend__subtitle">Red fever:</span>
+                <ul>
+                    <li>Reddish skin – hot and moist to the touch</li>
+                    <li>Warm limbs</li>
+                    <li>Rapid pulse and breathing against the background of an increase in temperature</li>
+                    <li>The child's behavior does not change.</li>
+                </ul>
+
+                <span class="recommend__subtitle">What we gonna do with red fever?</span>
+                <ul>
+                    <li>Undress the baby as much as possible;</li>
+                    <li>Apply a cool wet bandage on the forehead;</li>
+                    <li>Regularly ventilate the room (without the formation of drafts);
+                        blow with a fan;
+                    </li>
+                    <li>Wipe the body with room temperature water;</li>
+                    <li>Apply cold to the projection of large vessels (in the axillary and inguinal areas, on the side
+                        of the neck) and the liver area;
+                        drink plenty of water.
+                    </li>
+                    <li>And if fever more than 38.5 degree, we need to <a class="recommend__link" href="#dose-count">take
+                        antipyretic</a></li>
+
+                </ul>
+
+
+            </div>
+        </div>
+        <div id="dose-count">
+            <form action="#" id="dose_count__form">
+                <label for="dc__age">Enter age:
+                    <input type="number" name="age" id="dc__age">
+                </label>
+                <label for="dc__weight">Enter Weight:
+                    <input type="number" name="weight" id="dc__weight">
+                </label>
+                <div class="dose_count__wrapper">
+                    <div>Do you have allergic reaction on:</div>
+                    <label>Ibuprofen
+                        <input type="checkbox" name="alg_ibuprofen"  value="Ibuprofen">
+                    </label>
+                    <label>Paracetamol
+                        <input type="checkbox" name="alg_paracetamol" value="Paracetamol">
+                    </label>
+                    <label>Analgin
+                        <input type="checkbox" name="alg_analgin" value="Analgin">
+                    </label>
+                </div>
+                <div class="dose_count__wrapper">
+                    <div>What kind of form do you prefer:</div>
+                    <label>Tablet
+                        <input type="radio" value="tablet" name="medForm">
+                    </label>
+                    <label>Suspension/sirop
+                        <input type="radio" value="sirop" name="medForm">
+                    </label>
+                    <label>Suppository
+                        <input type="radio" value="suppository" name="medForm">
+                    </label>
+                </div>
+                <div class="dose_count__wrapper">
+                    <div>What kind of medicine do you prefer:</div>
+                    <select name="preferMedicine">
+                        <option value="Paracetamol">Paracetamol</option>
+                        <option value="Analgin">Analgin</option>
+                        <option value="Ibuprofen">Ibuprofen</option>
+                    </select>
+                </div>
+                <div class="dose_count__wrapper">
+                    <div>Patient's body (legs and arms) is cold?</div>
+                    <label>Yes
+                        <input type="radio" value="white" name="isCold">
+                    </label>
+                    <label>No
+                        <input type="radio" value='red' name="isCold">
+                    </label>
+                </div>
+                <button class="dose_count__btn btn" type="submit">Отправить данные</button>
+
+
+            </form>
+        </div>
+        <div id="donate">
+            <form action="" id="donate__form">
+                <div class="donate__info-add">
+                    <h3 class="donate__title">Additional information</h3>
+                    <div class="donate__container">
+                        <label for="donate__social">
+                            <span class="donat__sub-title">Social</span>
+                            <input type="checkbox" name="share" id="donate__social">
+                            Share with your friends on social networks
+                        </label>
+                        <label>
+                            <span class="donat__sub-title"></span>
+                            <a href="">
+                                <span style="font-size: 1.5rem; color: Dodgerblue;">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </span>
+                            </a>
+                            <a href="">
+                                <span style="font-size: 1.5rem; color: Dodgerblue;">
+                                    <i class="fa-brands fa-twitter"></i>
+                                </span>
+                            </a>
+                            <a href="">
+                                <span style="font-size: 1.5rem; color: Dodgerblue;">
+                                    <i class="fa-brands fa-square-facebook"></i>
+                                </span>
+                            </a>
+                        </label>
+                        <label for="donate__company">
+                            <span class="donat__sub-title">Corporate:</span>
+                            <input type="checkbox" name="company" id="donate__company">
+                            This donation is on behalf of a company
+                        </label>
+                        <label for="donate__anon">
+                            <span class="donat__sub-title">Anonymous:</span>
+                            <input type="checkbox" name="anon" id="donate__anon">
+                            I prefer to make this donation anonymously
+
+                        </label>
+                        <label for="donate__comment">
+                            <span class="donat__sub-title">Comments:</span>
+                            <textarea name="comment" id="donate__comment"></textarea>
+                        </label>
+                    </div>
+
+                </div>
+                <div class="donate__payment">
+                    <h3 class="donate__title">Payment information</h3>
+                    <div class="donate__container">
+                        <label for="donate__name">
+                            <span class="donat__sub-title">Cardholder's Name:</span>
+                            <input type="text" name="anon" id="donate__name">
+                        </label>
+                        <label for="donate__card-type">
+                            <span class="donat__sub-title">Card Type:</span>
+                            <input type="text" name="card-type" id="donate__card-type">
+                        </label>
+                        <label for="donate__card-number">
+                            <span class="donat__sub-title">Credit Card Number:</span>
+                            <input type="text" name="card-number" id="donate__card-number">
+                        </label>
+                        <label for="donate__card-exp">
+                            <span class="donat__sub-title">Card Expiration:</span>
+                            <input type="number" name="card-exp" id="donate__card-exp">
+                            <input type="number" name="card-exp" id="">
+                        </label>
+                        <label for="donate__csc">
+                            <span class="donat__sub-title">Card Security Code:</span>
+                            <input type="text" maxlength="3" name="csc" id="donate__csc">
+                        </label>
+                        <label for="donate__amount">
+                            <span class="donat__sub-title">Amount:</span>
+                            <input type="number" name="amount" id="donate__amount">
+                        </label>
+                        <button id="donate__btn" type="submit">donate now</button>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+        <div id="result">
+            <div class="result__first-step frs-stp">
+                <h3>Take <span data-key="med-main"></span></h3>
+                <p>Your age-related dosage is <span data-key="dose"></span></p>
+                <div class="frs-stp__cold">
+                    <h3 class="frs-stp__title">Physical methods which you need to do </h3>
+                    <ul data-key="white">
+                        <li>Papaverine or no-shpa in age-related dosage;</li>
+                        <li>Rubbing the skin of the limbs and trunk;</li>
+                        <li>Applying a heating pad to the feet (the temperature of the heating pad is 37° C);</li>
+                    </ul>
+                    <ul data-key="red">
+                        <li>The child must be undressed, provide access to fresh air, wipe with a wet swab at a water
+                            temperature of at least 37 ° C, let the child dry, repeat the procedure 2-3 times with an
+                            interval of 10-15 minutes; Blow with a fan, use a wet bandage on the forehead, axillary
+                            areas, cold on the area of large vessels.
+                        </li>
+                        <li>It is necessary to drink plenty of sweet warm tea with lemon, cranberry juice, juice,
+                            decoctions of herbs of lime flowers, raspberries;
+                        </li>
+                        <li>Feed the child in small portions in small quantities, put a lot of emphasis on copious
+                            drinking;
+                        </li>
+                    </ul>
+                    <button class="frs-stp-btn">Done</button>
+                </div>
+            </div>
+            <div class="wait-one-hour">Cool,hope your've done all recommendation, now you need wait 1 hour,if
+                temperature won't drop by al least 1 degree, I tell you what you need to do next, Good Luck!
+            </div>
+
+            <div class="result__second-question">
+                Do your temperature drop by one degree?
+                <button data-key="fst-yes">Yes</button>
+                <button data-key="fst-no">No</button>
+            </div>
+            <div class="result__second-answer_pos">Congratulate! Keep apply physical methods. Get Well!</div>
+            <div class="result__second-answer_neg">
+                It's OK, you just need to take <span data-key="med-extra"></span>. Your dosage is <span
+                    data-key="dose-extra"></span>
+                And continue to apply physical methods!
+            </div>
+            <div class="result__third-question">
+                Do your temperature drop by one degree?
+                <button data-key="scd-yes">Yes</button>
+                <button data-key="scd-no">No</button>
+            </div>
+            <div class="result__third-answer">You've done all, that you can by you own. Now you need to call 103. Get
+                Well!
+            </div>
+        </div>
+    </div>
+
+</main>
+<footer id="footer"></footer>
+<script src="https://kit.fontawesome.com/8f4e3ed004.js" crossorigin="anonymous"></script>
+<script src="index.js"></script>
+</body>
+</html>

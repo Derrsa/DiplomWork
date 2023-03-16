@@ -1,0 +1,294 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
+header{
+    padding: 20px 0;
+    margin-bottom: 50px;
+    /*position: sticky;*/
+}
+
+:root{
+    --main-red: #D9042B;
+    --main-pink: #F26D9E;
+    --main-blue: #6BBFBF;
+    --main-orange: #F2A74B;
+    --main-midorange: #D99C79;
+}
+
+
+
+.alert{
+    border: 1px solid red;
+    border-radius: 2px;
+}
+.alert__text{
+    font-size: 0.7em;
+    color: red;
+    display: none;
+}
+.container{
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 10%;
+}
+main{
+    height: 75vh;
+}
+
+header .container{
+    justify-content: space-between;
+}
+
+.nav__list{
+    display: flex;
+    color: #F2A74B;
+    font-size: 20px;
+    font-weight: 500;
+
+}
+
+.nav__item:not(:last-child){
+    margin-right: 20px;
+}
+
+/*============================================MAIN==========================================*/
+/*----------------------------------------------LOGIN--------------------------------------------*/
+#login{
+    display: flex;
+    justify-content: center;
+}
+.login__container{
+    display: flex;
+    padding: 50px 50px;
+    flex-direction: column;
+    /*max-width: 200px;*/
+    align-items: center;
+    border: 1px solid black;
+}
+
+.login__user-block, .login__password-block{
+    flex-direction: column;
+    margin-bottom: 15px;
+    width: 100%;
+
+}
+.alert-login{
+    font-size: 0.5em;
+    color: red;
+}
+.login__user-block .alert__text, .alert__incorrect{
+    display: none;
+}
+
+.login__btn{
+    margin-bottom: 10px;
+}
+/*----------------------------------------------REGISTRATION--------------------------------------------*/
+
+.login__reg{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.reg__title{
+    color: #F2A74B;
+}
+.reg__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.reg__inputs-wrp{
+    display: grid;
+    align-self: center;
+    max-width: 400px;
+    grid-template-rows: repeat(4,1fr);
+    grid-template-columns: 1fr 1fr;
+    row-gap: 10px;
+    padding: 10px;
+    color: #F2A74B;
+}
+.reg__inputs-wrp input{
+    border: 1px solid black;
+    color: #F2A74B;
+}
+
+
+
+.reg__inputs-wrp input:focus{
+    outline: 2px solid rgba(0, 0, 0, 0.57);
+    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.32);
+    border: none;
+    border-radius: 3px;
+}
+
+.btn{
+    background-color: indianred;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.reg__done{
+    flex-direction: column;
+    align-items: center;
+    display: none;
+}
+
+.reg__done h3{
+    color: #F2A74B;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
+/*----------------------------------------------PRESENT--------------------------------------------*/
+#present{
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: 1fr;
+    column-gap: 40px;
+    height: 50vh;
+}
+.present__block{
+    cursor: pointer;
+    display: inline-block;
+    height: 400px;
+    border: #D9042B solid 1px;
+    border-radius: 20px;
+    background: center no-repeat;
+    font-size: 2em;
+    text-align: center;
+    color: #D9042B;
+    background-size: contain;
+
+}
+
+.present__block:not(:last-child){
+}
+
+.present__donate{
+    background-image: url("../images/donate.jpg");
+}
+.present__rec{
+    background-image: url("../images/article_temp_new.webp");
+
+}
+.present__count{
+    background-image: url("../images/art_temperature_39c.webp");
+}
+/*----------------------------------------------DOSE-COUNT--------------------------------------------*/
+#dose-count{
+    border: 1px solid black;
+    padding: 20px;
+}
+
+#dose_count__form{
+    display: grid;
+    grid-template-rows: repeat(3,1fr);
+    grid-template-columns:repeat(2,1fr) ;
+    gap: 20px;
+}
+
+.dose_count__wrapper div{
+    margin-bottom: 5px;
+}
+
+.dose_count__btn{
+    max-width: 170px;
+    display: inline-block;
+    padding: 3px;
+}
+
+
+
+/*----------------------------------------------DONATE--------------------------------------------*/
+#donate__form {
+
+}
+
+.donate__container{
+    display: flex;
+    flex-direction: column;
+    padding: 0 10%;
+}
+
+.donate__container label{
+    display: block;
+    margin-bottom: 20px;
+}
+
+.donate__title{
+    margin-bottom: 30px;
+}
+.donate__payment label input{
+    width: 50%;
+    height: 30px;
+}
+label[for='donate__card-exp'] input{
+    width: 80px;
+}
+
+label[for='donate__csc'] input{
+    width: 80px;
+}
+
+label[for='donate__amount'] input{
+    width: 80px;
+}
+
+.donat__sub-title{
+    display: inline-block;
+    width: 200px;
+    text-align: right;
+    margin-right: 40px;
+    vertical-align: top;
+}
+#donate__comment{
+    width: 50%;
+}
+
+#donate__btn{
+    cursor: pointer;
+    align-self: center;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 30px;
+    text-transform: uppercase;
+}
+
+/*----------------------------------------------RECOMMEND--------------------------------------------*/
+.recommend__title{
+    color: var(--main-pink);
+}
+
+.recommend__text, ul{
+    color: var(--main-midorange);
+}
+
+.recommend__subtitle{
+    color: #D9042B;
+    font-weight: bolder;
+
+}
+.recommend__subtitle-white{
+    color: grey;
+    font-weight: bolder;
+}
+
+.recommend__link{
+    text-decoration: underline;
+    font-weight: bolder;
+    color: var(--main-red);
+}
+
+
