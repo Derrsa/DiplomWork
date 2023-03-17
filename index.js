@@ -2,9 +2,27 @@
 const LS = localStorage
 const nav = document.querySelector('.nav')
 const prefix = 'https://it-academy-js-api-zmicerboksha.vercel.app/api/6/vp/medicine'
+const MEDICINE = [
+    {
+        name: 'Paracetamol',
+        type: {
+            tablet: ['500','200'],
+            sirop: ['30/1','120/5'],
+            suppository: ['80','100','125','150','170','250','300','330']
+        }
+    },
+    {
+        name: 'Ibuprofen',
+        type: {
+            caps: ['200'],
+            tablet: ['200','400'],
+            sirop: ['100/5','200/5'],
+            suppository: ['60']
+        }
+    }
+]
 
-
-async function addChildData(url, ChildAntipyretic = null, ChildAllergy = null, ChildMedicineType = null, ChildWeight = null, ChildAge = null) {
+async function addChildData(url, ChildAntipyretic , ChildAllergy , ChildMedicineType , ChildWeight , ChildAge ) {
     let userData = await fetch(url + `/${LS.getItem("currentUserID")}`, {
         method: "PUT",
         headers: {
@@ -19,6 +37,9 @@ async function addChildData(url, ChildAntipyretic = null, ChildAllergy = null, C
         })
     });
 }
+
+
+
 
 //---------------------------------LOGIN
 const login = document.querySelector('#login')
@@ -196,7 +217,7 @@ regBtn.addEventListener('click', (el) => {
         })
     })
     if (regEmail.value && regPassword.value && regChild.value) {
-        fetchWithLog(prefix, {
+        fetch(prefix, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -223,33 +244,42 @@ regBtnDone.addEventListener('click', (el) => {
 
 // -----------------------------------------------GET-DOSE
 doseBtn.addEventListener('click', (el) => {
+    el.preventDefault()
+
+    let mainMed = document.querySelector('.frs-stp span[data-key="med-main"]')
     patientAllergicArr.forEach(el => {
         if (el.checked) {
             patientAllergic.push(el.value)
         }
-    })
-    // function addChildData(url){
-    //     fetch(url + `/${LS.getItem("currentUserID")}`, {
-    //         method: "PUT",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify({
-    //             ChildAntipyretic: patientMedicine.value,
-    //             ChildAllergy:patientAllergic,
-    //             ChildMedicineType: patientMedicineType.value,
-    //             ChildWeight: ++patientWeight.value,
-    //             ChildAge:++patientAge.value
-    //         })
-    //     });
-    // }
-    // addChildData(prefix)
-
+    });
     addChildData(
         prefix, patientMedicine.value, patientAllergic,
-        patientMedicineType.value, ++patientWeight.value,
-        ++patientAge.value)
-    el.preventDefault()
+        patientMedicineType.value, Number(patientWeight.value),
+        Number(patientAge.value));
+    (async function (){
+        console.log('hi')
+        let childFormDose = null
+        let userData = await fetch(prefix + `/${LS.getItem("currentUserID")}`).then(res => res.json())
+        let doseCount = function (){
+            let dose = userData.ChildWeight * 10
+            if(userData.ChildAntipyretic === 'Paracetamol'){
+                if(userData.ChildMedicineType === "suppository" ){
+                    MEDICINE[0].type.suppository.find( (el ,index,arr)=>{
+                        console.log(dose)
+                        if(dose < Number(el)  ){
+                            let first = Number(arr[index-1])
+                            console.log(first)
+                            return childFormDose = Math.abs(Number(el)-dose) < Math.abs(first-dose) ? el : first
+                        }
+                    })
+                }
+                mainMed.innerText = `${userData.ChildAntipyretic}  ${userData.ChildMedicineType} ${childFormDose} `
+            }
+        }
+        doseCount()
+    })()
+    location.hash = 'result'
+
 })
 
 

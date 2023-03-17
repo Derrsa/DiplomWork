@@ -19,7 +19,7 @@ header{
 
 .alert{
     border: 1px solid red;
-    border-radius: 2px;
+    border-radius: 2px;box-shadow: 0 0 4px red;
 }
 .alert__text{
     font-size: 0.7em;
@@ -209,8 +209,17 @@ header .container{
     padding: 3px;
 }
 
+/*----------------------------------------------RESULT--------------------------------------------*/
+.wait-one-hour{}
+.result__second-question{}
+.result__second-answer_pos{}
+.result__second-answer_neg{}
+.result__third-question{}
+.result__third-answer{}
 
-
+.wait-one-hour ,.result__second-question,.result__second-answer_pos,.result__second-answer_neg,.result__third-question,.result__third-answer{
+    display: none;
+}
 /*----------------------------------------------DONATE--------------------------------------------*/
 #donate__form {
 
