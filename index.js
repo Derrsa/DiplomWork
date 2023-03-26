@@ -6,23 +6,23 @@ const MEDICINE = [
     {
         name: 'Paracetamol',
         type: {
-            tablet: ['500','200'],
-            sirop: ['30/1','120/5'],
-            suppository: ['80','100','125','150','170','250','300','330']
+            tablet: ['500', '200'],
+            sirop: ['30/1', '120/5'],
+            suppository: ['80', '100', '125', '150', '170', '250', '300', '330']
         }
     },
     {
         name: 'Ibuprofen',
         type: {
             caps: ['200'],
-            tablet: ['200','400'],
-            sirop: ['100/5','200/5'],
+            tablet: ['200', '400'],
+            sirop: ['100/5', '200/5'],
             suppository: ['60']
         }
     }
 ]
 
-async function addChildData(url, ChildAntipyretic , ChildAllergy , ChildMedicineType , ChildWeight , ChildAge ) {
+async function addChildData(url, ChildAntipyretic, ChildAllergy, ChildMedicineType, ChildWeight, ChildAge) {
     let userData = await fetch(url + `/${LS.getItem("currentUserID")}`, {
         method: "PUT",
         headers: {
@@ -37,8 +37,6 @@ async function addChildData(url, ChildAntipyretic , ChildAllergy , ChildMedicine
         })
     });
 }
-
-
 
 
 //---------------------------------LOGIN
@@ -247,36 +245,118 @@ doseBtn.addEventListener('click', (el) => {
     el.preventDefault()
 
     let mainMed = document.querySelector('.frs-stp span[data-key="med-main"]')
+    let mainDose = document.querySelector('.frs-stp span[data-key="dose"]')
     patientAllergicArr.forEach(el => {
         if (el.checked) {
             patientAllergic.push(el.value)
         }
     });
-    addChildData(
-        prefix, patientMedicine.value, patientAllergic,
-        patientMedicineType.value, Number(patientWeight.value),
-        Number(patientAge.value));
-    (async function (){
-        console.log('hi')
+    (async function () {
+        document.querySelector('ul[data-key="white"]').style.display = 'block'
+        document.querySelector('ul[data-key="red"]').style.display = 'block'
+        let usersData = await fetch(prefix + `/${LS.getItem("currentUserID")}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                ChildAntipyretic: patientMedicine.value,
+                ChildAllergy: patientAllergic,
+                ChildMedicineType: patientMedicineType.value,
+                ChildWeight: Number(patientWeight.value),
+                ChildAge: Number(patientAge.value)
+            })
+        });
+
+
         let childFormDose = null
         let userData = await fetch(prefix + `/${LS.getItem("currentUserID")}`).then(res => res.json())
-        let doseCount = function (){
-            let dose = userData.ChildWeight * 10
-            if(userData.ChildAntipyretic === 'Paracetamol'){
-                if(userData.ChildMedicineType === "suppository" ){
-                    MEDICINE[0].type.suppository.find( (el ,index,arr)=>{
+        let doseCount = function () {
+            if (userData.ChildAntipyretic === 'Paracetamol') {
+                let dose = userData.ChildWeight * 10
+                if (userData.ChildMedicineType === "suppository") {
+                    mainDose.innerText = `One suppository`
+                    MEDICINE[0].type.suppository.find((el, index, arr) => {
                         console.log(dose)
-                        if(dose < Number(el)  ){
-                            let first = Number(arr[index-1])
+                        if (dose <= 80) {
+                            return childFormDose = '80'
+                        } else if (dose >= 330) {
+                            return childFormDose = '330'
+                        }
+                        if (dose < Number(el)) {
+                            let first = Number(arr[index - 1])
                             console.log(first)
-                            return childFormDose = Math.abs(Number(el)-dose) < Math.abs(first-dose) ? el : first
+                            return childFormDose = Math.abs(Number(el) - dose) < Math.abs(first - dose) ? el : first
                         }
                     })
+                } else if (userData.ChildMedicineType === "tablet") {
+                    mainDose.innerText = `One tablet`
+                    if (dose > 150 && dose < 200) {
+                        childFormDose = '200'
+                    } else if (dose > 200 && dose < 300) {
+                        mainDose.innerText = `One and half tablet`
+                        childFormDose = '200'
+                    } else if (dose > 300) {
+                        childFormDose = '400'
+                    }
+                } else if (userData.ChildMedicineType === "sirop") {
+                    childFormDose = '120/5'
+                    mainDose.innerText = `${dose * 5 / 120}ml`
                 }
-                mainMed.innerText = `${userData.ChildAntipyretic}  ${userData.ChildMedicineType} ${childFormDose} `
+                mainMed.innerText = `${userData.ChildAntipyretic}  ${userData.ChildMedicineType} ${childFormDose}mg `
+
+            } else if (userData.ChildAntipyretic === 'Ibuprofen') {
+                if (document.querySelector('.frs-stp p').style.display === 'none') {
+                    document.querySelector('.frs-stp p').style.display = 'block'
+                }
+                let dose = userData.ChildWeight * 10
+                if (userData.ChildMedicineType === "suppository") {
+
+                    if (userData.ChildWeight <= 6) {
+                        mainDose.innerText = `One suppository`
+                        childFormDose = '60'
+                    } else if (userData.ChildWeight <= 12) {
+                        mainDose.innerText = `Two suppository`
+                        childFormDose = '60'
+                    } else {
+                        document.querySelector('.frs-stp p').style.display = 'none'
+                        mainMed.innerText = `another form`
+                        return
+                    }
+                } else if (userData.ChildMedicineType === "tablet") {
+                    mainDose.innerText = `One  tablet`
+                    if (userData.ChildWeight > 10 && userData.ChildWeight < 15) {
+                        mainDose.innerText = `Half tablet`
+                        childFormDose = '200'
+                    } else if (userData.ChildWeight >= 15 && userData.ChildWeight <= 30) {
+                        childFormDose = '200'
+                    } else if (userData.ChildWeight >= 30) {
+                        childFormDose = '400'
+                    } else if (userData.ChildWeight <10) {
+                        document.querySelector('.frs-stp p').style.display = 'none'
+                        mainMed.innerText = `another form`
+                        return
+                    }
+                } else if (userData.ChildMedicineType === "sirop") {
+                    if (userData.ChildWeight <= 10) {
+                        childFormDose = '100/5'
+                        mainDose.innerText = `${dose * 5 / 100}ml`
+                    } else if (userData.ChildWeight > 10) {
+                        childFormDose = '200/5'
+                        mainDose.innerText = `${dose * 5 / 200}ml`
+                    }
+
+                }
+                mainMed.innerText = `${userData.ChildAntipyretic}  ${userData.ChildMedicineType} ${childFormDose}mg `
+
             }
         }
         doseCount()
+        if (patientFeverType.value === 'white') {
+            document.querySelector('ul[data-key="red"]').style.display = 'none'
+        } else {
+            document.querySelector('ul[data-key="white"]').style.display = 'none'
+        }
     })()
     location.hash = 'result'
 
