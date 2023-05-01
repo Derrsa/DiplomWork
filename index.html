@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
+
     <link rel="icon" type="image/x-icon" href="/images/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,13 +13,14 @@
     <title>Low degree</title>
 </head>
 <body>
+
 <header id="header">
     <div class="container flex">
         <div class="logo">
-            <span style="font-size: 1.5rem; color: darkred;">
+            <a href="#present" class="logo__link"></a>
+            <span >
                 <i class="fa-sharp fa-solid fa-2xl fa-temperature-arrow-down"></i>
             </span>
-
         </div>
         <nav class="nav">
             <ul class="nav__list list-reset ">
@@ -34,7 +37,13 @@
                     <a href="#login" class="nav__link">Logout</a>
                 </li>
             </ul>
+
         </nav>
+        <div class="burger-menu">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </div>
     </div>
 </header>
 
@@ -58,8 +67,8 @@
                     <span class="alert__incorrect alert-login">Enter correct password!</span>
                 </div>
 
-                <button class="login__btn">Login</button>
-                <button class="login__reg">Registration</button>
+                <button class="login__btn btn">Login</button>
+                <button class="login__reg ">Registration</button>
             </div>
         </div>
         <div id="reg">
@@ -168,51 +177,67 @@
         <div id="dose-count">
             <form action="#" id="dose_count__form">
                 <label for="dc__age">Enter age:
-                    <input type="number" name="age" id="dc__age">
+                    <input type="number" name="age" id="dc__age" min="0" max="100">
                 </label>
                 <label for="dc__weight">Enter Weight:
-                    <input type="number" name="weight" id="dc__weight">
+                    <input type="number" name="weight" id="dc__weight" class="" min="0" max="100">
                 </label>
                 <div class="dose_count__wrapper">
                     <div>Do you have allergic reaction on:</div>
-                    <label>Ibuprofen
-                        <input type="checkbox" name="alg_ibuprofen"  value="Ibuprofen">
-                    </label>
-                    <label>Paracetamol
-                        <input type="checkbox" name="alg_paracetamol" value="Paracetamol">
-                    </label>
-<!--                    <label>Analgin-->
-<!--                        <input type="checkbox" name="alg_analgin" value="Analgin">-->
-<!--                    </label>-->
+                    <div class="dose_count__wrapper-custom-cb">
+                        <label class="custom-checkbox">Ibuprofen
+                            <input type="checkbox" name="alg_ibuprofen" value="Ibuprofen">
+                            <span></span>
+                        </label>
+                        <label class="custom-checkbox">Paracetamol
+                            <input type="checkbox" name="alg_paracetamol" value="Paracetamol">
+                            <span></span>
+                        </label>
+                    </div>
+
+                    <!--                    <label>Analgin-->
+                    <!--                        <input type="checkbox" name="alg_analgin" value="Analgin">-->
+                    <!--                    </label>-->
                 </div>
-                <div class="dose_count__wrapper">
+                <div class="dose_count__wrapper ">
                     <div>What kind of form do you prefer:</div>
-                    <label>Tablet
-                        <input type="radio" value="tablet" name="medForm">
-                    </label>
-                    <label>Suspension/sirop
-                        <input type="radio" value="sirop" name="medForm">
-                    </label>
-                    <label>Suppository
-                        <input type="radio" value="suppository" name="medForm">
-                    </label>
+                    <div class="dose_count__wrapper-custom">
+                        <label class="custom__input">Tablet
+                            <input type="radio" value="tablet" name="medForm" checked>
+                            <span></span>
+                        </label>
+                        <label class="custom__input">Suspension/sirop
+                            <input type="radio" value="sirop" name="medForm">
+                            <span></span>
+                        </label>
+                        <label class="custom__input">Suppository
+                            <input type="radio" value="suppository" name="medForm">
+                            <span></span>
+                        </label>
+                    </div>
+
                 </div>
                 <div class="dose_count__wrapper">
                     <div>What kind of medicine do you prefer:</div>
                     <select name="preferMedicine">
                         <option value="Paracetamol">Paracetamol</option>
-<!--                        <option value="Analgin">Analgin</option>-->
+                        <!--                        <option value="Analgin">Analgin</option>-->
                         <option value="Ibuprofen">Ibuprofen</option>
                     </select>
                 </div>
                 <div class="dose_count__wrapper">
                     <div>Patient's body (legs and arms) is cold?</div>
-                    <label>Yes
-                        <input type="radio" value="white" name="isCold">
-                    </label>
-                    <label>No
-                        <input type="radio" value='red' name="isCold">
-                    </label>
+                    <div class="dose_count__wrapper-custom">
+                        <label class="custom__input">Yes
+                            <input type="radio" value="white" name="isCold">
+                            <span></span>
+                        </label>
+                        <label class="custom__input">No
+                            <input type="radio" value='red' name="isCold">
+                            <span></span>
+                        </label>
+                    </div>
+
                 </div>
                 <button class="dose_count__btn btn" type="submit">Отправить данные</button>
 
@@ -302,8 +327,11 @@
         </div>
         <div id="result">
             <div class="result__first-step frs-stp">
-                <h3>Take <span data-key="med-main"></span></h3>
-                <p>Your age-related dosage is <span data-key="dose"></span></p>
+                <div class="result__first-step-wrapper shadow__border">
+                    <h3>Take <span data-key="med-main"></span></h3>
+                    <p>Your age-related dosage is <span data-key="dose"></span></p>
+                </div>
+
                 <div class="frs-stp__cold">
                     <h3 class="frs-stp__title">Physical methods which you need to do </h3>
                     <ul data-key="white">
@@ -324,38 +352,66 @@
                             drinking;
                         </li>
                     </ul>
-                    <button class="frs-stp-btn">Done</button>
+                    <button class="frs-stp-btn btn">Done</button>
                 </div>
             </div>
-            <div class="wait-one-hour">Cool,hope your've done all recommendation, now you need wait 1 hour,if
-                temperature won't drop by al least 1 degree, I tell you what you need to do next, Good Luck!
+            <div class="wait-one-hour">
+                <p class="wait-one-hour__text">
+                    Cool,hope your've done all recommendation, now you need wait 1 hour,if
+                    temperature won't drop by al least 1 degree, I tell you what you need to do next, Good Luck!
+                </p>
+                <div class="container__clock">
+                </div>
             </div>
 
             <div class="result__second-question">
-                Do your temperature drop by one degree?
-                <button data-key="fst-yes">Yes</button>
-                <button data-key="fst-no">No</button>
+                <p>Do your temperature drop by one degree?</p>
+                <button data-key="fst-yes" class="btn">Yes</button>
+                <button data-key="fst-no" class="btn">No</button>
             </div>
-            <div class="result__second-answer_pos">Congratulate! Keep apply physical methods. Get Well!</div>
+            <div class="result__second-answer_pos ">
+                <p class="second-answer_pos__text ">Congratulate! Keep apply physical methods. Get Well!</p>
+                <button class="second-answer_pos__btn btn">Return</button>
+            </div>
             <div class="result__second-answer_neg">
-                It's OK, you just need to take <span data-key="med-extra"></span>. Your dosage is <span
-                    data-key="dose-extra"></span>
-                And continue to apply physical methods!
+                <div class="second-answer__wrapper shadow__border">
+                    <h3 class="second-answer__text">You need to take <span data-key="med-extra"></span>. </h3>
+                    <p class="second-answer_neg__text">
+                        Your dosage is <span
+                            data-key="dose-extra"></span>
+                    </p>
+                </div>
+                <div class="container__clock-copy">
+                </div>
+                <p class="second-answer_neg__sub-text">Wait half-hour and continue to apply physical methods!</p>
+
+
             </div>
             <div class="result__third-question">
-                Do your temperature drop by one degree?
-                <button data-key="scd-yes">Yes</button>
-                <button data-key="scd-no">No</button>
+                <p class="third-question">Do your temperature drop by one degree?</p>
+                <button data-key="scd-yes" class="btn">Yes</button>
+                <button data-key="scd-no" class="btn" >No</button>
             </div>
-            <div class="result__third-answer">You've done all, that you can by you own. Now you need to call 103. Get
-                Well!
+
+            <div class="result__third-answer">
+                <p class="third-answer">
+                    You've done all, that you can by you own. Now you need to call 103. Get
+                    Well!
+                </p>
+
+                <button class="third-answer__btn btn">Return</button>
             </div>
         </div>
     </div>
 
 </main>
-<footer id="footer"></footer>
+<footer id="footer">
+    <div class="container">
+    </div>
+
+</footer>
 <script src="https://kit.fontawesome.com/8f4e3ed004.js" crossorigin="anonymous"></script>
 <script src="index.js"></script>
+
 </body>
 </html>
